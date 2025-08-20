@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class NoteFlowBackendApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(NoteFlowBackendApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(NoteFlowBackendApplication.class, args);
+    }
 
 }
