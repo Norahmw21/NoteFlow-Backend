@@ -21,5 +21,10 @@ public class User {
 
     @Column(name = "password_h", nullable = false, length = 255)
     private String passwordH;
-}
 
+    @Column(length = 255)
+    private String avatarUrl;   // link to profile picture
+
+    @Column(length = 20)
+    private String phone;       // optional phone number
+}
