@@ -8,6 +8,7 @@ public class NoteFlowBackendApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(NoteFlowBackendApplication.class, args);
+        System.out.println("Application started");
     }
 
 }
