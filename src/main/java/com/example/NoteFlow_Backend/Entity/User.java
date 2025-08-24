@@ -3,6 +3,7 @@ package com.example.NoteFlow_Backend.Entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -27,4 +28,8 @@ public class User {
 
     @Column(length = 20)
     private String phone;       // optional phone number
+
+    // 🔹 New: One user owns many notes
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Note> notes;
 }
