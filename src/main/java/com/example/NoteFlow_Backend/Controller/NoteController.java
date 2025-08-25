@@ -17,10 +17,14 @@ public class NoteController {
         this.service = service;
     }
 
-    // Active notes of a user
+    // Active notes of a user (with optional tag filters)
     @GetMapping
-    public ResponseEntity<List<Note>> list(@PathVariable Long userId) {
-        return ResponseEntity.ok(service.listByUser(userId));
+    public ResponseEntity<List<Note>> list(
+            @PathVariable Long userId,
+            @RequestParam(required = false) String tagName,
+            @RequestParam(required = false) String tagColor
+    ) {
+        return ResponseEntity.ok(service.listByUser(userId, tagName, tagColor));
     }
 
     // Trash & favorites

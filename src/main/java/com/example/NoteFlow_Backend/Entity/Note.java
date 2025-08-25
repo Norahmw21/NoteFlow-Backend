@@ -1,6 +1,5 @@
 package com.example.NoteFlow_Backend.Entity;
 
-import com.example.NoteFlow_Backend.Entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.Instant;
@@ -43,6 +42,13 @@ public class Note {
 
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
+
+    // NEW: Tag fields
+    @Column(name = "tag_name")
+    private String tagName;             // e.g., "Algorithms"
+
+    @Column(name = "tag_color", length = 7)
+    private String tagColor;            // hex like "#3B82F6"
 
     @PrePersist
     void onCreate(){

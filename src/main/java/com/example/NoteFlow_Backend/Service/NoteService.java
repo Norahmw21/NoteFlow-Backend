@@ -30,6 +30,25 @@ public class NoteService {
         return repo.findAllByUserUserIdAndTrashedFalseOrderByUpdatedAtDesc(userId);
     }
 
+    // NEW: overload with tag filters
+    public List<Note> listByUser(Long userId, String tagName, String tagColor) {
+        boolean hasName = tagName != null && !tagName.isBlank();
+        boolean hasColor = tagColor != null && !tagColor.isBlank();
+
+        if (hasName && hasColor) {
+            return repo.findAllByUserUserIdAndTrashedFalseAndTagNameIgnoreCaseAndTagColorOrderByUpdatedAtDesc(
+                    userId, tagName.trim(), tagColor.trim());
+        }
+        if (hasName) {
+            return repo.findAllByUserUserIdAndTrashedFalseAndTagNameIgnoreCaseOrderByUpdatedAtDesc(
+                    userId, tagName.trim());
+        }
+        if (hasColor) {
+            return repo.findAllByUserUserIdAndTrashedFalseAndTagColorOrderByUpdatedAtDesc(userId, tagColor.trim());
+        }
+        return listByUser(userId);
+    }
+
     public List<Note> listTrashByUser(Long userId) {
         return repo.findAllByUserUserIdAndTrashedTrueOrderByUpdatedAtDesc(userId);
     }
@@ -54,6 +73,7 @@ public class NoteService {
         n.setTrashed(false);
         n.setFavorite(false);
         n.setDeletedAt(null);
+        // tagName/tagColor accepted as provided (nullable)
         return repo.save(n);
     }
 
@@ -64,6 +84,8 @@ public class NoteService {
         if (incoming.getTitle() != null) n.setTitle(incoming.getTitle());
         if (incoming.getTextHtml() != null) n.setTextHtml(incoming.getTextHtml());
         if (incoming.getDrawingJson() != null) n.setDrawingJson(incoming.getDrawingJson());
+        if (incoming.getTagName() != null) n.setTagName(incoming.getTagName());
+        if (incoming.getTagColor() != null) n.setTagColor(incoming.getTagColor());
         return n; // dirty-checked
     }
 
@@ -90,4 +112,3 @@ public class NoteService {
         repo.delete(n);
     }
 }
-
