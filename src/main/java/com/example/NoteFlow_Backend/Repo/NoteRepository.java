@@ -18,3 +18,5 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
     List<Note> findAllByUserUserIdAndTrashedFalseAndTagNameIgnoreCaseAndTagColorOrderByUpdatedAtDesc(Long userId, String tagName, String tagColor);
     Optional<Note> findByIdAndUserUserId(Long id, Long userId);
 }
+
+

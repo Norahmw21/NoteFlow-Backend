@@ -1,5 +1,6 @@
 package com.example.NoteFlow_Backend.Entity;
 
+
 //------------------------- Import -------------------------//
 import jakarta.persistence.*; //Brings in JPA annotations and types, to map this class to a database table.
 import lombok.*; //generates boilerplate (getters/setters/constructors/builder) at compile time.
