@@ -1,17 +1,20 @@
 package com.example.NoteFlow_Backend.Service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 @Service
 public class OllamaService {
 
     private final WebClient webClient;
-    private final String ollamaUrl; // Store the URL as a field
+    private final String ollamaUrl;
+    private static final Logger logger = LoggerFactory.getLogger(OllamaService.class);
+
 
     public OllamaService(@Value("${ollama.url:http://localhost:11434}") String ollamaUrl) {
         this.ollamaUrl = ollamaUrl; // Store the URL
@@ -22,6 +25,11 @@ public class OllamaService {
 
     public Flux<String> generateResponse(String model, String prompt) {
         OllamaRequest request = new OllamaRequest(model, prompt, true);
+
+        // Log the request details
+        logger.info("Sending request to Ollama - Model: {}, Prompt: {}", model, prompt);
+        System.out.println("DEBUG - Ollama Request: " +
+                "Model=" + model + ", Prompt=" + prompt.substring(0, Math.min(50, prompt.length())) + "...");
 
         return webClient.post()
                 .uri("/api/generate")
