@@ -1,12 +1,13 @@
 package com.example.NoteFlow_Backend.Controller;
 
+//----------------- Import -----------------//
 import com.example.NoteFlow_Backend.Entity.Note;
 import com.example.NoteFlow_Backend.Service.NoteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
+//---------------- Controller --------------//
 @RestController
 @RequestMapping("/api/users/{userId}/notes")
 @CrossOrigin(origins = "*")
