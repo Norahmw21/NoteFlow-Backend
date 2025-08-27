@@ -30,7 +30,7 @@ Project demo → **[Video](https://www.canva.com/design/DAGxK9Peo_E/NWPbT8BwOSOV
 
   * Read & update profile fields (username, email, phone, avatar)
 
-* **🤖 AI **
+* **🤖 AI**
 
   *  `/chat` endpoint to forward requests to **Ollama** 
   * Easy key/URL configuration via properties
