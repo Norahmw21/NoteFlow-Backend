@@ -1,7 +1,7 @@
 
 # 🛠️ NoteFlow — Backend (Spring Boot)
 
-**NoteFlow-Backend** powers the NoteFlow desktop app with secure authentication, notes & folders, favorites, to-dos, and profile APIs. It’s built with **Spring Boot 3**, **PostgreSQL**, and **Spring Security (JWT)**.
+**NoteFlow-Backend** powers the NoteFlow desktop app with secure authentication, notes, favorites, to-dos, and profile APIs. It’s built with **Spring Boot 3**, **PostgreSQL**, and **Spring Security (JWT)**.
 
 Frontend repo → **[NoteFlow-Frontend](https://github.com/Norahmw21/NoteFlow-Frontend)**
 
